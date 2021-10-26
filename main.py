@@ -6,14 +6,10 @@ board = []
 
 
 class Setup_Board:
-    def __init__(self, num_ships, user_name, type):
+    def __init__(self, num_ships):
         self.num_ships = num_ships
-        self.user_name = user_name
-        self.type = type 
     
-    
-    
-
+        
 def game_board(board):
     """
     Creates the game board that the user can play in.
