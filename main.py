@@ -6,6 +6,7 @@ board = []
 Computer_board = []
 ship_hit = 'X'
 ship = 'O'
+water = ['-']
 
 
 class Setup_Board:
@@ -23,7 +24,6 @@ def game_board(board):
     print('    0 1 2 3 4 5 6 7 8 9')
     print('  +---------------------+')
     for row in range(10):
-        water = ['-']
         board.append(water * 10)
     
     letters = 0
