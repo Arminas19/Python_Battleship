@@ -1,23 +1,27 @@
 from random import randint
 
-player_score = 0
-computer_score = 0
+Scores = {
+    'Player': 0,
+    'Computer': 0
+}
 board = []
 Computer_board = []
-ship_hit = 'X'
-ship = 'O'
 water = ['-']
 
 
 class Setup_Board:
-    def __init__(self, num_ships):
+    def __init__(self, num_ships, type):
         self.num_ships = num_ships
-    
-        
-def game_board(board):
+        self.type = type
+        self.ship_hit = 'X'
+        self.ship = 'O'
+
+
+def game_board(self):
     """
     Creates the game board that the user can play in.
     """
+    type = 'Player'
     print('Enter Your Name: ')
     print('\n\n\n')
     input('          ')
@@ -25,25 +29,31 @@ def game_board(board):
     print('  +---------------------+')
     for row in range(10):
         board.append(water * 10)
-    
+
     letters = 0
     for row in range(10):
-        print(chr(letters + 65), end=' | ') 
+        print(chr(letters + 65), end=' | ')
         for column in range(len(board[letters])):
             print(board[letters][column], end=' ')
         print('| ')
         letters += 1
     print('  +---------------------+ \n\n\n')
 
+
+def computer_board(self):
+    """
+    Computers Board
+    """
+    type = 'Computer'
     print('         COMPUTER ')
     print('    0 1 2 3 4 5 6 7 8 9')
     print('  +---------------------+')
     for row in range(10):
         Computer_board.append(water * 10)
-         
+
     letters = 0
     for row in range(10):
-        print(chr(letters + 65), end=' | ') 
+        print(chr(letters + 65), end=' | ')
         for column in range(len(board[letters])):
             print(Computer_board[letters][column], end=' ')
         print('| ')
@@ -61,6 +71,7 @@ def New_game():
     print('Example: row: 2  comlumn: D \n \n\n')
 
     game_board(board)
+    computer_board(Computer_board)
 
 
 New_game()
