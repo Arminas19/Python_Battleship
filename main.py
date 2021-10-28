@@ -10,18 +10,36 @@ water = ['-']
 
 
 class Setup_Board:
-    def __init__(self, num_ships, ship_hit, ship):
+    def __init__(self, num_ships, ship_hit, ship, type, guess):
         self.num_ships = 5
         self.ship_hit = 'X'
+        self.type = type
         self.ship = 'O'
+        self.guess = []
 
     def add_ships(self):
         """
         Adds ships to game_board function and Computer function.
         """
+        if type == 'Computer':
+            while self.num_ships == len(self.ship):
+                Computer_board.append(self.ship)
+        else:
+            if type == 'Player':
+                while self.num_ships == len(self.ship):
+                    board.append(self.ship)
+                    board[water] = 'O'
 
+    def guesses(self, row, column, ship_coordinates):
+        self.ship_coordinates = [(row, column)]
+        self.guess.append((row, column))
+        if (row, column) in board[water] == 'O':
+            return 'Hit'
+        else:
+            return 'Miss'
 
-def Player_board():
+    
+def Player_board(type):
     """
     Creates the game board that the user can play in.
     """
@@ -44,7 +62,7 @@ def Player_board():
     print('  +---------------------+ \n\n\n')
 
 
-def computer_board():
+def computer_board(type):
     """
     Computers Board
     """
@@ -74,8 +92,8 @@ def New_game():
     print('enemy ships are by choosing a row and a column.')
     print('Example: row: 2  comlumn: D \n \n\n')
 
-    Player_board()
-    computer_board()
+    Player_board(type='Player')
+    computer_board(type='Computer')
 
 
 New_game()
