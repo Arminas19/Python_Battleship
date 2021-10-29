@@ -4,18 +4,20 @@ Scores = {
     'Player': 0,
     'Computer': 0
 }
-board = []
-Computer_board = []
-water = ['-']
 
 
 class Setup_Board:
-    def __init__(self, num_ships, ship_hit, ship, type, guess):
+    def __init__(self, num_ships, ship_hit, ship, type, guess, water,
+                 computer_board, board, player_name):
         self.num_ships = 5
         self.ship_hit = 'X'
         self.type = type
         self.ship = 'O'
         self.guess = []
+        self.water = ['-']
+        self.computer_board = []
+        self.board = []
+        self.player_name = player_name
 
     def add_ships(self):
         """
@@ -23,11 +25,11 @@ class Setup_Board:
         """
         if type == 'Computer':
             while self.num_ships >= len(self.ship):
-                Computer_board.append(self.ship)
+                self.computer_board.append(self.ship)
         else:
             if type == 'Player':
                 while self.num_ships >= len(self.ship):
-                    board.append(self.ship)
+                    self.board.append(self.ship)
 
     def guesses(self, row, column, ship_coordinates):
         """
@@ -35,66 +37,74 @@ class Setup_Board:
         """
         self.ship_coordinates = ((row, column))
         self.guess.append((row, column))
-        if (row, column) in board[ship_coordinates] == 'X':
+        if (row, column) in self.computer_board[ship_coordinates] == 'X':
             return 'Hit'
         else:
             return 'Miss'
 
-    
-def Player_board(type):
-    """
-    Creates the game board that the user can play in.
-    """
+    def render_Player_board(self, type, player_name):
+        """
+        Creates the game board that the user can play in.
+        """
+        print('\n\n\n')
+        print(f'          {self.player_name}')
+        print('    0 1 2 3 4 5 6 7 8 9')
+        print('  +---------------------+')
+        for row in range(10):
+            self.board.append(self.water * 10)
 
-    print('Enter Your Name: ')
-    print('\n\n\n')
-    input('          ')
-    print('    0 1 2 3 4 5 6 7 8 9')
-    print('  +---------------------+')
-    for row in range(10):
-        board.append(water * 10)
+        letters = 0
+        for row in range(10):
+            print(chr(letters + 65), end=' | ')
+            for column in range(len(self.board[letters])):
+                print(self.board[letters][column], end=' ')
+            print('| ')
+            letters += 1
+        print('  +---------------------+ \n\n\n')
 
-    letters = 0
-    for row in range(10):
-        print(chr(letters + 65), end=' | ')
-        for column in range(len(board[letters])):
-            print(board[letters][column], end=' ')
-        print('| ')
-        letters += 1
-    print('  +---------------------+ \n\n\n')
+    def render_computer_board(self, type):
+        """
+        renders Computers Board
+        """
 
+        print('         COMPUTER ')
+        print('    0 1 2 3 4 5 6 7 8 9')
+        print('  +---------------------+')
+        for row in range(10):
+            self.computer_board.append(self.water * 10)
 
-def computer_board(type):
-    """
-    Computers Board
-    """
-
-    print('         COMPUTER ')
-    print('    0 1 2 3 4 5 6 7 8 9')
-    print('  +---------------------+')
-    for row in range(10):
-        Computer_board.append(water * 10)
-
-    letters = 0
-    for row in range(10):
-        print(chr(letters + 65), end=' | ')
-        for column in range(len(board[letters])):
-            print(Computer_board[letters][column], end=' ')
-        print('| ')
-        letters += 1
-    print('  +---------------------+ \n\n\n')
+        letters = 0
+        for row in range(10):
+            print(chr(letters + 65), end=' | ')
+            for column in range(len(self.computer_board[letters])):
+                print(self.computer_board[letters][column], end=' ')
+            print('| ')
+            letters += 1
+        print('  +---------------------+ \n\n\n')
 
 
 def New_game():
     """
     Starts a new game and welcomes the user to the game.
     """
+    computer_board = ['']
+    board = []
+    num_ships = 5
+    ship_hit = 'X'
+    ship = 'O'
+    guess = []
+    water = ['-']
     print('Welcome To Battleship!! ')
     print('How to play? Try and guess where the')
     print('enemy ships are by choosing a row and a column.')
     print('Example: row: 2  comlumn: D \n \n\n')
-    Player_board(type='Player')
-    computer_board(type='Computer')
+    player_name = input('Enter Your Name: ')
+
+    setup_pb = Setup_Board(num_ships, ship_hit, ship, type, guess, water,
+                           computer_board, board, player_name)
+                           
+    setup_pb.render_Player_board('Player', player_name)
+    setup_pb.render_computer_board('Computer')
 
 
 New_game()
