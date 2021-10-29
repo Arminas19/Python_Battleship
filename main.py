@@ -22,18 +22,20 @@ class Setup_Board:
         Adds ships to game_board function and Computer function.
         """
         if type == 'Computer':
-            while self.num_ships == len(self.ship):
+            while self.num_ships >= len(self.ship):
                 Computer_board.append(self.ship)
         else:
             if type == 'Player':
-                while self.num_ships == len(self.ship):
+                while self.num_ships >= len(self.ship):
                     board.append(self.ship)
-                    board[water] = 'O'
 
     def guesses(self, row, column, ship_coordinates):
-        self.ship_coordinates = [(row, column)]
+        """
+        Returns a value of hit or miss.
+        """
+        self.ship_coordinates = ((row, column))
         self.guess.append((row, column))
-        if (row, column) in board[water] == 'O':
+        if (row, column) in board[ship_coordinates] == 'X':
             return 'Hit'
         else:
             return 'Miss'
@@ -91,7 +93,6 @@ def New_game():
     print('How to play? Try and guess where the')
     print('enemy ships are by choosing a row and a column.')
     print('Example: row: 2  comlumn: D \n \n\n')
-
     Player_board(type='Player')
     computer_board(type='Computer')
 
