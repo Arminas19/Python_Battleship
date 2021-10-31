@@ -1,4 +1,4 @@
-from random import randint
+import random
 
 
 class Setup_Board:
@@ -15,18 +15,6 @@ class Setup_Board:
         self.player_name = player_name
         self.row = 9
         self.column = 9
-
-    def add_ships(self):
-        """
-        Adds ships to game_board function and Computer function.
-        """
-        if type == 'Computer':
-            while self.num_ships >= len(self.ship):
-                self.computer_board.append(self.ship)
-        else:
-            if type == 'Player':
-                while self.num_ships >= len(self.ship):
-                    self.board.append(self.ship)
 
     def guesses(self, row, column):
         """
@@ -69,6 +57,33 @@ class Setup_Board:
         Populates the two boards
         """
 
+        # runs twice
+        for i in ['computer', 'player']:
+            # set a counter to go to 5
+            counter = 1
+            computer_counter = 1
+            while counter <= 5 or computer_counter <= 5:
+                # generate the random num
+                
+                random_number = random.randrange(10)
+                # fill the computer board
+                if i == 'computer':
+                    # check if already taken, if so continue burt dont increase the counter
+                    if self.computer_board[random_number][random_number] == 'O':
+                        continue
+                    else:
+                        # otherwise add the board 0, and increase the counter
+                        self.computer_board[random_number][random_number] = 'O'
+                        computer_counter += 1
+                        continue
+                elif i == 'player':
+                    if self.board[random_number][random_number] == 'O':
+                        continue
+                    else:
+                        self.board[random_number][random_number] = 'O'
+                        counter += 1
+                        continue
+                      
     def make_guess(self):
         """
         Player can guess and computer will auto guess.
@@ -122,7 +137,7 @@ def New_game():
     # computer_score = 9
     column = 0
     row = 0
-    computer_board = ['']
+    computer_board = []
     board = []
     num_ships = 5
     ship_hit = 'X'
@@ -143,6 +158,7 @@ def New_game():
 
     setup_pb.render_Player_board('Player', player_name)
     setup_pb.render_computer_board('Computer')
+    setup_pb.populate_boards(computer_board, board)
 
     row = input('Enter a Row: ')
     column = input('Enter a Column: ')
