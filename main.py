@@ -127,6 +127,7 @@ class Setup_Board:
             print('| ')
             letters += 1
         print('  +---------------------+ \n\n\n')
+        
 
 
 def New_game():
@@ -135,8 +136,8 @@ def New_game():
     """
     # player_score = 9
     # computer_score = 9
-    column = 0
-    row = 0
+    column = 9
+    row = 9
     computer_board = []
     board = []
     num_ships = 5
@@ -152,7 +153,6 @@ def New_game():
     print('Row and column must be between 0 and 9.')
     player_name = input('Enter Your Name: ')
     print('-------------------------------------------\n\n\n')
-    
     setup_pb = Setup_Board(num_ships, ship_hit, ship, type, guess, water,
                            computer_board, board, player_name, row, column)
 
