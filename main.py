@@ -51,39 +51,7 @@ class Setup_Board:
                     if self.computer_board[self.row][self.column] == ['-']:
                         print('Computer Missed')
                         return 'Computer_Missed'
-
-    def populate_boards(self, computer_board, board):
-        """
-        Populates the two boards
-        """
-
-        # runs twice
-        for i in ['computer', 'player']:
-            # set a counter to go to 5
-            counter = 1
-            computer_counter = 1
-            while counter <= 5 or computer_counter <= 5:
-                # generate the random num
-                
-                random_number = random.randrange(10)
-                # fill the computer board
-                if i == 'computer':
-                    # check if already taken, if so continue burt dont increase the counter
-                    if self.computer_board[random_number][random_number] == 'O':
-                        continue
-                    else:
-                        # otherwise add the board 0, and increase the counter
-                        self.computer_board[random_number][random_number] = 'O'
-                        computer_counter += 1
-                        continue
-                elif i == 'player':
-                    if self.board[random_number][random_number] == 'O':
-                        continue
-                    else:
-                        self.board[random_number][random_number] = 'O'
-                        counter += 1
-                        continue
-                      
+                  
     def make_guess(self):
         """
         Player can guess and computer will auto guess.
@@ -127,7 +95,46 @@ class Setup_Board:
             print('| ')
             letters += 1
         print('  +---------------------+ \n\n\n')
-        
+
+    def populate_boards(self, computer_board, board):
+        """
+        Populates the two boards
+        """
+        del computer_board
+        del board
+
+        for board in [self.computer_board, self.board]:
+            counter = 1
+            # computer_counter = 1
+            while counter <= 5:  # or computer_counter <= 5:
+                random_number_x = random.randrange(10)
+                random_number_y = random.randrange(10)
+
+                # print(random_number)
+                # fill the computer board
+                # check if already taken, if so continue but dont increase the counter
+                if board[random_number_x][random_number_y] == 'O':
+                    continue
+                else:
+                    # otherwise add the board 0, and increase the counter
+                    board[random_number_x][random_number_y] = 'O'
+                    counter += 1
+                # if i == 'computer':
+                #     # check if already taken, if so continue but dont increase the counter
+                #     if self.computer_board[random_number][random_number] == 'O':
+                #         continue
+                #     else:
+                #         # otherwise add the board 0, and increase the counter
+                #         self.computer_board[random_number][random_number] = 'O'
+                #         computer_counter += 1
+                #         continue
+                # elif i == 'player':
+                #     if self.board[random_number][random_number] == 'O':
+                #         continue
+                #     else:
+                #         self.board[random_number][random_number] = 'O'
+                #         counter += 1
+                #         continue    
 
 
 def New_game():
@@ -156,13 +163,16 @@ def New_game():
     setup_pb = Setup_Board(num_ships, ship_hit, ship, type, guess, water,
                            computer_board, board, player_name, row, column)
 
-    setup_pb.render_Player_board('Player', player_name)
-    setup_pb.render_computer_board('Computer')
+    # setup_pb.render_Player_board('Player', player_name)
+    # setup_pb.render_computer_board('Computer')
     setup_pb.populate_boards(computer_board, board)
 
-    row = input('Enter a Row: ')
-    column = input('Enter a Column: ')
-
+    setup_pb.render_Player_board('Player', player_name)
+    setup_pb.render_computer_board('Computer')
+    
+    # row = input('Enter a Row: ')
+    # column = input('Enter a Column: ')
+"""
     if type == 'Player' and num_ships == 0:
         print('Computer has won, starting new game')
         New_game()
@@ -170,6 +180,19 @@ def New_game():
         if type == 'Computer' and num_ships == 0:
             print('Player Has Won, starting new game')
             New_game()
+"""
+"""
+    # For player
+    x, y = -1, -1
+    while not setup_pb.validate_corordinates(self.board, x,y):
+        x,y = input()
+    make_move(self.board, x, y)
 
+    # For computer
+    x, y = -1 ,-1
+    while not setup_pb.validate_corordinates(self.computer_board, x,y):
+        x,y = make_guess()
+    is_hit= make_move(self.computer_board, x, y)
+"""
 
 New_game()
