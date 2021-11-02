@@ -30,19 +30,40 @@ class Setup_Board:
         """
         Vaildates the corordinates that the Computer and Player Choose
         """
-        self.row = input('Enter a Row: ')
-        self.column = input('Enter a Column: ')
+        Alpabet = None
+        while True:
+            Alpabet = input('Enter a Row: ')
+            if Alpabet.isdigit() and int(Alpabet) >= 0 and int(Alpabet) <= 9:
+                Alpabet = int(Alpabet) 
+                break
+            else: 
+                print('Row must between 0 and 9 and be an int')
+                continue
 
-        if self.board[self.row][self.column] == 'O':
-            self.board[self.row][self.column] = 'X'
+        Numbers = None
+        while True:
+            Numbers = input('Enter a Column: ')
+            if Numbers.isdigit() and int(Numbers) >= 0 and int(Numbers) <= 9:
+                Numbers = int(Numbers)
+                break
+            else: 
+                print('Column must between 0 and 9 and be an int')
+                continue
+
+        print(self.computer_board[Alpabet][Numbers])
+
+        if self.computer_board[Alpabet][Numbers] == 'O':
+            print('Hit')
+            self.computer_board[Alpabet][Numbers] = 'X'
             return 'Hit'
-            
+
         else:
-            if self.board[self.row][self.column] == 'X':
+            if self.computer_board[Alpabet][Numbers] == 'X':
                 print('Already picked this Corordinate, Please Pick again.')
             else:
-                if self.board[self.row][self.column] == ['-']:
-                    self.board[self.row][self.column] = 'X'
+                if self.computer_board[Alpabet][Numbers] == ['-']:
+                    print('Missed')
+                    self.computer_board[Alpabet][Numbers] = 'X'
                     return 'Missed'
 
     def populate_boards(self, computer_board, board):
@@ -151,7 +172,7 @@ def New_game():
     print('enemy ships are by choosing a row and a column.')
     print('Example: row: 2  comlumn: 2 \n \n\n')
     print('Row and column must be between 0 and 9.')
-    player_name = input('Enter Your Name: ')
+    player_name = (input('Enter Your Name: '))
     print('-------------------------------------------\n\n\n')
     setup_pb = Setup_Board(num_ships, ship_hit, ship, type, guess, water,
                            computer_board, board, player_name, row, column)
