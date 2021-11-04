@@ -32,15 +32,19 @@ class Setup_Board:
                 if self.numbers.isdigit() and int(self.numbers) >= 0 and int(self.numbers) <= 9:
                     self.numbers = int(self.numbers)
                     if self.computer_board[self.alpabet][self.numbers] == 'O':
-                        print('Hit')
+                        print('You Hit')
                         self.num_ships -= 1
                         self.computer_board[self.alpabet][self.numbers] = 'X'
+                        self.render_computer_board('Computer')
+                       
                     elif self.computer_board[self.alpabet][self.numbers] == 'X':
                         print('Already picked this Corordinate, Please Pick again.')
                     else:
                         if self.computer_board[self.alpabet][self.numbers] == '-':
-                            print('Missed')
+                            print('You Missed')
                             self.computer_board[self.alpabet][self.numbers] = 'X'
+                            self.render_computer_board('Computer')
+                            
 
                 else:
                     print('row and colum must be between 0 and 9, they must be an int')
@@ -129,22 +133,26 @@ class Setup_Board:
                 #         counter += 1
                 #         continue
 
-    def make_guess(self):
+    def make_guess(self, player_name):
         """
         computer will auto guess.
         """
         computer_guess_x = random.randrange(10)
         computer_guess_y = random.randrange(10)
-        while self.num_ships > 0:
-            print('computer row: ' + computer_guess_x)
-            print('computer column: ' + computer_guess_y)
+        while self.num_ships >= 0:
+            print(f'computer row: {computer_guess_x}')
+            print(f'computer column: {computer_guess_y}')
             if self.board[computer_guess_x][computer_guess_y] == 'O':
                 print('Computer has Hit one of your ships')
                 self.board[computer_guess_x][computer_guess_y] = 'X'
                 self.num_ships -= 1
+                self.render_Player_board('Player', player_name)
+                
             elif self.board[computer_guess_x][computer_guess_y] == '-':
                 print('Computer has Missed')
                 self.board[computer_guess_x][computer_guess_y] = 'X'
+                self.render_Player_board('Player', player_name)
+                
             else:
                 self.board[computer_guess_x][computer_guess_y] == 'X'
 
@@ -219,15 +227,18 @@ def New_game():
     print('-------------------------------------------\n\n\n')
     setup_pb = Setup_Board(num_ships, ship_hit, ship, type, guess, water,
                            computer_board, board, player_name, row, column, alpabet, numbers)
-
+    print('---------------------------------------------')
+    print('This is what the boards look like.')
     setup_pb.render_Player_board('Player', player_name)
     setup_pb.render_computer_board('Computer')
+    print('---------------------------------------------')
     setup_pb.populate_boards(computer_board, board)
-
+    print('---------------------------------------------')
+    print('Game Starts Here')
     setup_pb.render_Player_board('Player', player_name)
     setup_pb.render_computer_board('Computer')
     setup_pb.validate_corordinates()
-    setup_pb.make_guess()
+    setup_pb.make_guess(player_name)
 
 
 """
