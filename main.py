@@ -5,6 +5,7 @@ class Setup_Board:
     """
     This setup_Board class sets up all the other methods so that they can all be connected and used together.
     """
+
     def __init__(self, num_ships, ship_hit, ship, type, guess, water,
                  computer_board, board, player_name, row, column, alpabet, numbers, computer_board2):
         self.num_ships = 5
@@ -50,8 +51,8 @@ class Setup_Board:
                             print('You Missed')
                             self.computer_board2[self.alpabet][self.numbers] = 'X'
                             self.render_computer_board2(alpabet, numbers)
-                            self.make_guess(player_name) 
-                                           
+                            self.make_guess(player_name)
+
                 else:
                     print('row and colum must be between 0 and 9, they must be an int')
             else:
@@ -70,7 +71,7 @@ class Setup_Board:
 
         for board in [self.computer_board, self.board]:
             counter = 1
-            while counter <= 5: 
+            while counter <= 5:
                 random_number_x = random.randrange(10)
                 random_number_y = random.randrange(10)
 
@@ -79,7 +80,7 @@ class Setup_Board:
                 else:
                     board[random_number_x][random_number_y] = 'O'
                     counter += 1
-            
+
     def make_guess(self, player_name):
         """
         computer will auto guess Corordinates, and this will update the render_player_board() function.
@@ -94,23 +95,23 @@ class Setup_Board:
                 print('Computer has Hit one of your ships')
                 self.board[computer_guess_x][computer_guess_y] = 'X'
                 self.num_ships -= 1
-                self.render_Player_board('Player', player_name) 
+                self.render_Player_board('Player', player_name)
                 break
-               
+
             elif self.board[computer_guess_x][computer_guess_y] == '-':
                 print('Computer has Missed')
                 self.board[computer_guess_x][computer_guess_y] = 'X'
-                self.render_Player_board('Player', player_name)  
+                self.render_Player_board('Player', player_name)
                 break
-               
+
             else:
                 computer_guess_x = random.randrange(10)
                 computer_guess_y = random.randrange(10)
-                                  
+
         if self.num_ships == 0:
             print('Computer has Won, starting new game')
-            New_game()      
-         
+            New_game()
+
     def render_Player_board(self, type, player_name):
         """
         Creates the game board that the Computer will guess in.
@@ -209,6 +210,6 @@ def New_game():
     setup_pb.render_computer_board2(alpabet, numbers)
     setup_pb.make_guess(player_name)
     setup_pb.validate_corordinates(player_name, alpabet, numbers)
-    
+
 
 New_game()
