@@ -16,7 +16,7 @@ class Setup_Board:
         self.row = 9
         self.column = 9
 
-    def validate_corordinates(self):
+    def validate_corordinates(self, player_name):
         """
         Vaildates the corordinates that the Computer and Player Choose
         """
@@ -36,16 +36,16 @@ class Setup_Board:
                         self.num_ships -= 1
                         self.computer_board[self.alpabet][self.numbers] = 'X'
                         self.render_computer_board('Computer')
-                       
+                        self.make_guess(player_name)
                     elif self.computer_board[self.alpabet][self.numbers] == 'X':
                         print('Already picked this Corordinate, Please Pick again.')
                     else:
                         if self.computer_board[self.alpabet][self.numbers] == '-':
                             print('You Missed')
                             self.computer_board[self.alpabet][self.numbers] = 'X'
-                            self.render_computer_board('Computer') 
-                           
-                                 
+                            self.render_computer_board('Computer')
+                            self.make_guess(player_name) 
+                                           
                 else:
                     print('row and colum must be between 0 and 9, they must be an int')
             else:
@@ -182,7 +182,7 @@ def New_game():
     setup_pb.render_Player_board('Player', player_name)
     setup_pb.render_computer_board('Computer')
     setup_pb.make_guess(player_name)
-    setup_pb.validate_corordinates()
+    setup_pb.validate_corordinates(player_name)
     
 
 New_game()
