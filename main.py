@@ -2,6 +2,9 @@ import random
 
 
 class Setup_Board:
+    """
+    This setup_Board class sets up all the other methods so that they can all be connected and used together.
+    """
     def __init__(self, num_ships, ship_hit, ship, type, guess, water,
                  computer_board, board, player_name, row, column, alpabet, numbers, computer_board2):
         self.num_ships = 5
@@ -19,7 +22,8 @@ class Setup_Board:
 
     def validate_corordinates(self, player_name, alpabet, numbers):
         """
-        Vaildates the corordinates that the Computer and Player Choose
+        Vaildates the corordinates that the Player Choose, it also updates the render_computer_board and 
+        the render_computer_board2() functions once the corordinates have been set. 
         """
         self.num_ships = 5
         while self.num_ships > 0:
@@ -59,7 +63,7 @@ class Setup_Board:
 
     def populate_boards(self, computer_board, board):
         """
-        Populates the two boards
+        Populates the two boards, render_computer_board and reder_player_board. 
         """
         del computer_board
         del board
@@ -78,11 +82,11 @@ class Setup_Board:
             
     def make_guess(self, player_name):
         """
-        computer will auto guess.
+        computer will auto guess Corordinates, and this will update the render_player_board() function.
         """
         self.num_ships = 5
-        computer_guess_x = 0
-        computer_guess_y = 0
+        computer_guess_x = random.randrange(10)
+        computer_guess_y = random.randrange(10)
         while self.num_ships > 0:
             print(f'computer row: {computer_guess_x}')
             print(f'computer column: {computer_guess_y}')
@@ -100,11 +104,8 @@ class Setup_Board:
                 break
                
             else:
-                old_guess_x = computer_guess_x
-                old_guess_y = computer_guess_y
                 computer_guess_x = random.randrange(10)
                 computer_guess_y = random.randrange(10)
-                print(f'Computer changed coordinates from {old_guess_x}, {old_guess_y} to {computer_guess_x}, {computer_guess_y}')
                                   
         if self.num_ships == 0:
             print('Computer has Won, starting new game')
@@ -112,7 +113,7 @@ class Setup_Board:
          
     def render_Player_board(self, type, player_name):
         """
-        Creates the game board that the user can play in.
+        Creates the game board that the Computer will guess in.
         """
         print('\n\n\n')
         print(f'          {self.player_name}')
@@ -132,7 +133,7 @@ class Setup_Board:
 
     def render_computer_board(self, type):
         """
-        renders Computers Board
+        renders Computers Board that the user will play in.
         """
         print('         COMPUTER ')
         print('    0 1 2 3 4 5 6 7 8 9')
@@ -151,7 +152,8 @@ class Setup_Board:
 
     def render_computer_board2(self, alpabet, numbers):
         """
-        renders Computers Board
+        renders Computer Board that the user will see, their is 2 computer board, one is for the user to see
+        and the other render_computer_board function is to play on. 
         """
         print('         COMPUTER ')
         print('    0 1 2 3 4 5 6 7 8 9')
@@ -176,8 +178,6 @@ def New_game():
     computer_board2 = []
     alpabet = None
     numbers = None
-    # player_score = 9
-    # computer_score = 9
     column = 9
     row = 9
     computer_board = []
@@ -206,7 +206,6 @@ def New_game():
     print('---------------------------------------------')
     print('Game Starts Here')
     setup_pb.render_Player_board('Player', player_name)
-    # setup_pb.render_computer_board('Computer')
     setup_pb.render_computer_board2(alpabet, numbers)
     setup_pb.make_guess(player_name)
     setup_pb.validate_corordinates(player_name, alpabet, numbers)
