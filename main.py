@@ -81,8 +81,8 @@ class Setup_Board:
         computer will auto guess.
         """
         self.num_ships = 5
-        computer_guess_x = random.randrange(10)
-        computer_guess_y = random.randrange(10)
+        computer_guess_x = 0
+        computer_guess_y = 0
         while self.num_ships > 0:
             print(f'computer row: {computer_guess_x}')
             print(f'computer column: {computer_guess_y}')
@@ -100,9 +100,12 @@ class Setup_Board:
                 break
                
             else:
+                old_guess_x = computer_guess_x
+                old_guess_y = computer_guess_y
                 computer_guess_x = random.randrange(10)
                 computer_guess_y = random.randrange(10)
-                                    
+                print(f'Computer changed coordinates from {old_guess_x}, {old_guess_y} to {computer_guess_x}, {computer_guess_y}')
+                                  
         if self.num_ships == 0:
             print('Computer has Won, starting new game')
             New_game()      
