@@ -19,6 +19,7 @@ This is a picture of the Heroku website where you will be playing the game.
 * Inputs
    + Get's user input
    + Play against the computer
+
 ![Computer and user inputs](inputs.PNG)
 * Input validation and error checking
    + You cannot enter a row or column number that's lower than 0 or thats higher than 9.
