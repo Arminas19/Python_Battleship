@@ -15,6 +15,7 @@ This is a picture of the Heroku website where you will be playing the game.
 * What features does my game have ?
    + Random board generator that generates the player and computer ships randomly.
    + the computer ships are hidden from the user.
+   
 ![random generator](random-generator.PNG)
 * Inputs
    + Get's user input
@@ -24,6 +25,7 @@ This is a picture of the Heroku website where you will be playing the game.
 * Input validation and error checking
    + You cannot enter a row or column number that's lower than 0 or thats higher than 9.
    + You cannot enter the same guess twice. 
+   + 
 ![input Validations](validation.PNG)
 
 ## Data Model
