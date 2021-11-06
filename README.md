@@ -2,6 +2,7 @@
 This battleship game is only played by one user. 
 The user wins by eliminating 5 of the computers ships.
 The computer will try and do the same. the computer generates a random number to try and hit one of your ships.
+
 This is a picture of the Heroku website where you will be playing the game.
 ![Heroku Game page](Game.PNG)
 ## How To play
@@ -25,7 +26,7 @@ This is a picture of the Heroku website where you will be playing the game.
 * Input validation and error checking
    + You cannot enter a row or column number that's lower than 0 or thats higher than 9.
    + You cannot enter the same guess twice. 
-   + 
+
 ![input Validations](validation.PNG)
 
 ## Data Model
