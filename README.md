@@ -13,15 +13,15 @@ The user wins by eliminating 5 of the computers ships.
 * What features does my game have ?
    + Random board generator that generates the player and computer ships randomly.
    + the computer ships are hidden from the user.
-   ![random generator](random-generator.PNG)
+![random generator](random-generator.PNG)
    + Get's user input
    + Play against the computer
-   ![Computer and user inputs](inputs.PNG)
+![Computer and user inputs](inputs.PNG)
 * Input validation and error checking
    + You cannot enter a row or column number that's lower than 0 or thats higher than 9.
    + You cannot enter the same guess twice. 
-   ![input Validations](validation.PNG)
-   
+![input Validations](validation.PNG)
+
 ## Data Model
 Heroku Link - https://battleship--game.herokuapp.com/
 bob
