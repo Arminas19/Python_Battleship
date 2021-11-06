@@ -1,6 +1,8 @@
 # Battleship--Game
 This battleship game is only played by one user. 
 The user wins by eliminating 5 of the computers ships.
+The computer will try and do the same. the computer generates a random number to try and hit one of your ships.
+This is a picture of the Heroku website where you will be playing the game.
 ![Heroku Game page](Game.PNG)
 ## How To play
 * To start the game, the user enters their name.
@@ -14,6 +16,7 @@ The user wins by eliminating 5 of the computers ships.
    + Random board generator that generates the player and computer ships randomly.
    + the computer ships are hidden from the user.
 ![random generator](random-generator.PNG)
+* Inputs
    + Get's user input
    + Play against the computer
 ![Computer and user inputs](inputs.PNG)
