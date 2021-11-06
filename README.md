@@ -30,5 +30,13 @@ This is a picture of the Heroku website where you will be playing the game.
 ![input Validations](validation.PNG)
 
 ## Data Model
+I decided to use a class model to generate the player and computer board and add the other methods to those boards.
+
+The set-up board class stores many variables but the most important are num_ships, player_name, computer_board, computer_board2, and board. They were all used to create and modify the player and computer boards. 
+
+The computer_board2 is used for displaying the computer's board to the user, the other computer_board is used as the backend where the game is actually happening.  
+
+## Testing
+
 Heroku Link - https://battleship--game.herokuapp.com/
 bob
