@@ -179,3 +179,73 @@ from urllib.request import urlopen
 
 # print(not_multiple_of_six(5))
 
+# For Loops
+# def check(password):
+#     has_number = False
+#     for i in password:
+#         if i.isdigit():
+#             has_number = True
+#     return has_number
+
+# password = input("Password: ")
+# has_number = check(password)
+# print(has_number)
+
+# def print_list(lst):
+#     for i in lst:
+#         print(i)
+
+
+# lst = ['gdsgfsd', 'sfsfsfsf', 'fsfsfsf']
+# print_lists = print_list(lst)
+
+# def print_gt3(lst):
+#     for i in lst:
+#         if i > 3:
+#             print(i)
+
+
+# lst = [3, 6, 8, 9, 2]
+# print_gt3(lst)
+
+# def print_add3(lst):
+#     for i in lst:
+#         print(i + 3)
+
+# print_add3([3, 6, 9])
+
+# def print_a_names(names):
+#     for i in names:
+#         if i.startswith('a') or i.startswith('A'):
+#             print(i)
+
+# names = ['arminas', 'Arminas', 'Struna', 'Timmy', 'adi']
+# print_a_names(names)
+
+# def print_nums_gt3(lst):
+#     for i in lst:
+#         if i > 3:
+#             print(i)
+
+
+# lst = [1, 2, 3, 4, 5, 6]
+# print_nums_gt3(lst)
+
+# def get_name(lst):
+#     for i in lst:
+#         if i.startswith('A'):
+#             return i
+
+
+# lst = ['Arminas', 'Struna', 'Adi']
+# print_return = get_name(lst)
+# print(print_return)
+
+# def get_odd(lst):
+#     for i in lst:
+#         if i % 2 == 1:
+#             return i
+
+# lst = [2, 3, 4, 5]
+# get_return = get_odd(lst)
+# print(get_return)
