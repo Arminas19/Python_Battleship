@@ -1,4 +1,5 @@
 from urllib.request import urlopen
+from datetime import datetime
 # text = input("Text: ")
 # emails = text.split(",")
 # output = "\n".join(emails)
@@ -249,3 +250,57 @@ from urllib.request import urlopen
 # lst = [2, 3, 4, 5]
 # get_return = get_odd(lst)
 # print(get_return)
+
+
+# DateTime()
+# now = datetime.now()
+# bday = datetime(now.year, 11, 25)
+# if bday < now:
+#     bday = datetime(now.year + 25, 11, 1)
+# diff = bday - now
+# print(diff.days)
+
+
+# Secret Messages
+MAPPING = {
+  'A': 'N', 
+  'B': 'O', 
+  'C': 'P', 
+  'D': 'Q', 
+  'E': 'R', 
+  'F': 'S', 
+  'G': 'T', 
+  'H': 'U', 
+  'I': 'V', 
+  'J': 'W', 
+  'K': 'X', 
+  'L': 'Y', 
+  'M': 'Z', 
+  'N': 'A', 
+  'O': 'B', 
+  'P': 'C', 
+  'Q': 'D', 
+  'R': 'E', 
+  'S': 'F', 
+  'T': 'G', 
+  'U': 'H', 
+  'V': 'I', 
+  'W': 'J', 
+  'X': 'K', 
+  'Y': 'L', 
+  'Z': 'M'
+}
+
+
+def cipher(original):
+    text = ''
+    for letter in original:
+        letter = letter.upper()
+        new_letter = MAPPING[letter]
+        text = text + new_letter
+    return text
+
+
+text = input("Text or secret: ")
+result = cipher(text)
+print(result)
