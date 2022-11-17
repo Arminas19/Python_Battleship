@@ -41,3 +41,16 @@
 # Light.toggle()
 # # print("Light on?: ", Light.on)
 # Light.is_on()
+
+
+class Light:
+    on = False
+
+
+a = Light()
+a.on = True
+Light.on = True
+b = Light()
+print("b.on: ", b.on)
+print("a.on: ", a.on)
+print(Light.on)
