@@ -122,7 +122,7 @@ class IceCream:
       self.scoops = 0
 
 
-class IceCreamTruck: # current step - add IceCreamTruck class
+class IceCreamTruck:  # current step - add IceCreamTruck class
   
   def __init__(self):
     super().__init__()
