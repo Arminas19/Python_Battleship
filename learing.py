@@ -125,51 +125,82 @@
 # Light2.is_on()
 
 # Inheritance concept
-# class IceCream:
+class IceCream:
 
-#   max_scoops = 3 # add a class attribute (introduced before)
+  max_scoops = 3 # add a class attribute (introduced before)
 
-#   def __init__(self):
-#     super().__init__()
-#     self.scoops = 0
+  def __init__(self):
+    super().__init__()
+    self.scoops = 0
 
-#   def eat(self, scoops):
-#     if self.scoops < scoops:
-#       print("Not enough bites left!")
-#     else:
-#       self.scoops -= scoops
+  def eat(self, scoops):
+    if self.scoops < scoops:
+      print("Not enough bites left!")
+    else:
+      self.scoops -= scoops
 
-#   def add(self, scoops):
-#     self.scoops += scoops
-#     if self.scoops > self.max_scoops: # current step - add logic
-#       print("Too many scoops! Dropped ice cream.")
-#       self.scoops = 0
+  def add(self, scoops):
+    self.scoops += scoops
+    if self.scoops > self.max_scoops: # current step - add logic
+      print("Too many scoops! Dropped ice cream.")
+      self.scoops = 0
 
 
-# class IceCreamTruck:  # current step - add IceCreamTruck class
+class IceCreamTruck:  # current step - add IceCreamTruck class
   
-#   def __init__(self):
-#     super().__init__()
-#     self.sold = 0
+  def __init__(self):
+    super().__init__()
+    self.sold = 0
 
-#   def order(self, scoops):
-#     ice_cream = IceCream()
-#     self.add(ice_cream, scoops)
-#     return ice_cream
+  def order(self, scoops):
+    ice_cream = IceCream()
+    self.add(ice_cream, scoops)
+    return ice_cream
 
-#   def add(self, ice_cream, scoops):
-#     ice_cream.add(scoops)
-#     self.sold += scoops
+  def add(self, ice_cream, scoops):
+    ice_cream.add(scoops)
+    self.sold += scoops
 
 
-# class DeluxeIceCreamTruck(IceCreamTruck):
+class DeluxeIceCreamTruck(IceCreamTruck):
     
-#     def order(self, scoops):
-#         ice_cream = super().order(scoops)
-#         ice_cream.add(1)
-#         return ice_cream
+    def order(self, scoops):
+        ice_cream = super().order(scoops)
+        ice_cream.add(1)
+        return ice_cream
 
 
+class Drinkable:
+
+  def __init__(self):
+    self.cups = 0
+
+  def add(self, cups):
+    self.cups += cups
+
+  def drink(self, cups):
+    self.cups -= cups
+
+
+class Lemonade(Drinkable):
+  pass
+    
+
+class MeltingIceCream(IceCream, Drinkable):
+  
+  def elapse(self, t):
+    melted = min(t, self.scoops)
+    self.scoops -= melted
+    self.cups += melted
+
+
+ice_cream = MeltingIceCream()
+ice_cream.add(3)
+ice_cream.elapse(2)
+print('Ice_cream scoops: ', ice_cream.scoops)
+print('iceCream cups: ', ice_cream.cups)
+ice_cream.drink(1)
+print('drank 1 ice cream, how many iceCream cups left?:', ice_cream.cups)
 # truck = IceCreamTruck()
 # ice_cream1 = truck.order(3)
 # ice_cream1.eat(2)
@@ -184,11 +215,12 @@
 
 # 2 parent classes
 
-class A:
-  pass
+# MRO example
+# class A:
+#   pass
 
-class B(A):
-  pass
+# class B(A):
+#   pass
 
-class C(A, B):
-  pass
+# class C(A, B):
+#   pass
