@@ -55,39 +55,83 @@
 # print(sub2(7))
 
 # Light Class
-# class light:
-#     def __init__(self, sync=None):
-#         super().__init__()
-#         print('creating light! ')
-#         self.sync = sync
-#         self.on = False
+class light:
+    def __init__(self, sync=None):
+        super().__init__()
+        print('creating light! ')
+        self.sync = sync
+        self.on = False
     
-#     def toggle(self):
-#         print('Toggle on and off!')
-#         self.on = not self.on 
-#         if self.sync is not None:
-#             self.sync.toggle()
+    def toggle(self):
+        print('Toggle on and off!')
+        self.on = not self.on 
+        if self.sync is not None:
+            self.sync.toggle()
     
-#     def is_on(self):
-#         if self.on == True:
-#             print("Light is on!")
-#         else:
-#             print("Light is off!")
+    def is_on(self):
+        if self.on == True:
+            print("Light is on!")
+        else:
+            print("Light is off!")
 
 
-# class OldLight(light):
+class OldLight(light):
 
-#   def __init__(self, sync=None):
-#     super().__init__(sync=sync)
-#     self.on = False
-#     self.sync = sync
-#     self.flicker = False
+  def __init__(self, sync=None):
+    super().__init__(sync=sync)
+    self.on = False
+    self.sync = sync
+    self.flicker = False
   
-#   def toggle(self):
-#     super().toggle()
-#     if self.on:
-#       self.flicker = not self.flicker
+  def toggle(self):
+    super().toggle()
+    if self.on:
+      self.flicker = not self.flicker
 
+
+class Timer:
+
+  def __init__(self):
+    self.left = 0
+
+  def set(self, left):
+    self.left = left
+
+  def ring(self):
+    print("Timer is up!")
+
+  def elapse(self, t):
+    if self.left > 0:
+      self.left = max(self.left - t, 0)
+      if self.left == 0:
+        self.ring()
+
+
+class TimerLight(light, Timer):
+
+  def set(self, left):
+    super().set(left)
+    if self.left > 0:
+      self.on = True
+
+  def ring(self):
+    super().ring()
+    self.on = False
+
+
+# timer = Timer()
+# timer.set(5)
+# timer.elapse(3)
+# timer.elapse(3)
+# print(timer.left)
+
+timer_light = TimerLight()
+timer_light.set(5)
+timer_light.is_on()
+timer_light.elapse(3)
+timer_light.is_on()
+timer_light.elapse(3)
+timer_light.is_on()
 
 # light = OldLight()
 # print(light.flicker)
@@ -194,13 +238,14 @@ class MeltingIceCream(IceCream, Drinkable):
     self.cups += melted
 
 
-ice_cream = MeltingIceCream()
-ice_cream.add(3)
-ice_cream.elapse(2)
-print('Ice_cream scoops: ', ice_cream.scoops)
-print('iceCream cups: ', ice_cream.cups)
-ice_cream.drink(1)
-print('drank 1 ice cream, how many iceCream cups left?:', ice_cream.cups)
+# ice_cream = MeltingIceCream()
+# ice_cream.add(3)
+# ice_cream.elapse(2)
+# print('Ice_cream scoops: ', ice_cream.scoops)
+# print('iceCream cups: ', ice_cream.cups)
+# ice_cream.drink(1)
+# print('drank 1 ice cream, how many iceCream cups left?:', ice_cream.cups)
+
 # truck = IceCreamTruck()
 # ice_cream1 = truck.order(3)
 # ice_cream1.eat(2)
