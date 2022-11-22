@@ -55,68 +55,68 @@
 # print(sub2(7))
 
 # Light Class
-class light:
-    def __init__(self, sync=None):
-        super().__init__()
-        print('creating light! ')
-        self.sync = sync
-        self.on = False
+# class light:
+#     def __init__(self, sync=None):
+#         super().__init__()
+#         print('creating light! ')
+#         self.sync = sync
+#         self.on = False
     
-    def toggle(self):
-        print('Toggle on and off!')
-        self.on = not self.on 
-        if self.sync is not None:
-            self.sync.toggle()
+#     def toggle(self):
+#         print('Toggle on and off!')
+#         self.on = not self.on 
+#         if self.sync is not None:
+#             self.sync.toggle()
     
-    def is_on(self):
-        if self.on == True:
-            print("Light is on!")
-        else:
-            print("Light is off!")
+#     def is_on(self):
+#         if self.on == True:
+#             print("Light is on!")
+#         else:
+#             print("Light is off!")
 
 
-class OldLight(light):
+# class OldLight(light):
 
-  def __init__(self, sync=None):
-    super().__init__(sync=sync)
-    self.on = False
-    self.sync = sync
-    self.flicker = False
+#   def __init__(self, sync=None):
+#     super().__init__(sync=sync)
+#     self.on = False
+#     self.sync = sync
+#     self.flicker = False
   
-  def toggle(self):
-    super().toggle()
-    if self.on:
-      self.flicker = not self.flicker
+#   def toggle(self):
+#     super().toggle()
+#     if self.on:
+#       self.flicker = not self.flicker
 
 
-class Timer:
+# class Timer:
 
-  def __init__(self):
-    self.left = 0
+#   def __init__(self):
+#     self.left = 0
 
-  def set(self, left):
-    self.left = left
+#   def set(self, left):
+#     self.left = left
 
-  def ring(self):
-    print("Timer is up!")
+#   def ring(self):
+#     print("Timer is up!")
 
-  def elapse(self, t):
-    if self.left > 0:
-      self.left = max(self.left - t, 0)
-      if self.left == 0:
-        self.ring()
+#   def elapse(self, t):
+#     if self.left > 0:
+#       self.left = max(self.left - t, 0)
+#       if self.left == 0:
+#         self.ring()
 
 
-class TimerLight(light, Timer):
+# class TimerLight(light, Timer):
 
-  def set(self, left):
-    super().set(left)
-    if self.left > 0:
-      self.on = True
+#   def set(self, left):
+#     super().set(left)
+#     if self.left > 0:
+#       self.on = True
 
-  def ring(self):
-    super().ring()
-    self.on = False
+#   def ring(self):
+#     super().ring()
+#     self.on = False
 
 
 # timer = Timer()
@@ -125,13 +125,13 @@ class TimerLight(light, Timer):
 # timer.elapse(3)
 # print(timer.left)
 
-timer_light = TimerLight()
-timer_light.set(5)
-timer_light.is_on()
-timer_light.elapse(3)
-timer_light.is_on()
-timer_light.elapse(3)
-timer_light.is_on()
+# timer_light = TimerLight()
+# timer_light.set(5)
+# timer_light.is_on()
+# timer_light.elapse(3)
+# timer_light.is_on()
+# timer_light.elapse(3)
+# timer_light.is_on()
 
 # light = OldLight()
 # print(light.flicker)
@@ -169,73 +169,73 @@ timer_light.is_on()
 # Light2.is_on()
 
 # Inheritance concept
-class IceCream:
+# class IceCream:
 
-  max_scoops = 3 # add a class attribute (introduced before)
+#   max_scoops = 3 # add a class attribute (introduced before)
 
-  def __init__(self):
-    super().__init__()
-    self.scoops = 0
+#   def __init__(self):
+#     super().__init__()
+#     self.scoops = 0
 
-  def eat(self, scoops):
-    if self.scoops < scoops:
-      print("Not enough bites left!")
-    else:
-      self.scoops -= scoops
+#   def eat(self, scoops):
+#     if self.scoops < scoops:
+#       print("Not enough bites left!")
+#     else:
+#       self.scoops -= scoops
 
-  def add(self, scoops):
-    self.scoops += scoops
-    if self.scoops > self.max_scoops: # current step - add logic
-      print("Too many scoops! Dropped ice cream.")
-      self.scoops = 0
+#   def add(self, scoops):
+#     self.scoops += scoops
+#     if self.scoops > self.max_scoops: # current step - add logic
+#       print("Too many scoops! Dropped ice cream.")
+#       self.scoops = 0
 
 
-class IceCreamTruck:  # current step - add IceCreamTruck class
+# class IceCreamTruck:  # current step - add IceCreamTruck class
   
-  def __init__(self):
-    super().__init__()
-    self.sold = 0
+#   def __init__(self):
+#     super().__init__()
+#     self.sold = 0
 
-  def order(self, scoops):
-    ice_cream = IceCream()
-    self.add(ice_cream, scoops)
-    return ice_cream
+#   def order(self, scoops):
+#     ice_cream = IceCream()
+#     self.add(ice_cream, scoops)
+#     return ice_cream
 
-  def add(self, ice_cream, scoops):
-    ice_cream.add(scoops)
-    self.sold += scoops
+#   def add(self, ice_cream, scoops):
+#     ice_cream.add(scoops)
+#     self.sold += scoops
 
 
-class DeluxeIceCreamTruck(IceCreamTruck):
+# class DeluxeIceCreamTruck(IceCreamTruck):
     
-    def order(self, scoops):
-        ice_cream = super().order(scoops)
-        ice_cream.add(1)
-        return ice_cream
+#     def order(self, scoops):
+#         ice_cream = super().order(scoops)
+#         ice_cream.add(1)
+#         return ice_cream
 
 
-class Drinkable:
+# class Drinkable:
 
-  def __init__(self):
-    self.cups = 0
+#   def __init__(self):
+#     self.cups = 0
 
-  def add(self, cups):
-    self.cups += cups
+#   def add(self, cups):
+#     self.cups += cups
 
-  def drink(self, cups):
-    self.cups -= cups
+#   def drink(self, cups):
+#     self.cups -= cups
 
 
-class Lemonade(Drinkable):
-  pass
+# class Lemonade(Drinkable):
+#   pass
     
 
-class MeltingIceCream(IceCream, Drinkable):
+# class MeltingIceCream(IceCream, Drinkable):
   
-  def elapse(self, t):
-    melted = min(t, self.scoops)
-    self.scoops -= melted
-    self.cups += melted
+#   def elapse(self, t):
+#     melted = min(t, self.scoops)
+#     self.scoops -= melted
+#     self.cups += melted
 
 
 # ice_cream = MeltingIceCream()
@@ -269,3 +269,22 @@ class MeltingIceCream(IceCream, Drinkable):
 
 # class C(A, B):
 #   pass
+
+# Fragile Base Case
+class A:
+  
+  def hi(self):
+    print('hi')
+
+  def hello(self):
+    self.hi()
+
+
+class B(A):
+
+  def hi(self):
+    self.hello()
+
+
+b = B()
+b.hi()
