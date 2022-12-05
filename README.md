@@ -1,4 +1,7 @@
 # Battleship--Game
+To open this Game in your terminal type: 
+' python3 run.py ' 
+
 This battleship game is only played by one user. 
 The user wins by eliminating 5 of the computer's ships.
 The computer will try and do the same. the computer generates a random number to try and hit one of your ships.
